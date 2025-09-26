@@ -83,19 +83,20 @@ jobs:
 
         echo '#!/bin/bash
         set -x
+        local_folder="$(pwd)"
+        echo -e "local_folder: $local_folder\n"
+
         HERE="$(dirname "$(readlink -f "${0}")")"
         echo "HERE: $HERE"
         HERE=$(echo "$HERE" | sed "s/usr\/bin//")
         echo "Removed usr/bin HERE: $HERE"
 
         cd "$HERE"/opt/python3*/bin/
-
         all_Parameters=$@
         echo -e "all_Parameters: $all_Parameters\n"
 
         if [ "$all_Parameters" != "" ]; then
             file=$(echo "$all_Parameters" | rev | cut -d " " -f1 | rev)
-            local_folder="$(pwd)"
             file="$local_folder/$file" # Add the current directory, $PWD, to the parameter with file
             parameters_less_file=$(echo "$all_Parameters" | rev | cut -d " " -f2- | rev)
         fi
