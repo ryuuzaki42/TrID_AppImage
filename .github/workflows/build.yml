@@ -58,21 +58,19 @@ jobs:
       run: |
         set -x
 
-        #version=$(grep -o "Syncplay:.*" README.md | cut -d ' ' -f2)
-        version=1
-        echo "Syncplay version: $version"
-
         cd squashfs-root/
         pwd
         ls -lah
 
         #rm -v python* .DirIcon AppRun
         rm .DirIcon
-        
+
         mv python.png TrID.png
         mv python3*.desktop TrID.desktop
-        
+
         cd opt/python3.*/bin/
+        version=$(grep "PROGRAM_VER " trid.py | cut -d '"' -f2)
+        echo "TrID version: $version"
 
         pwd; ls -lah
         cd ../../../
@@ -85,7 +83,8 @@ jobs:
         pwd; ls -lah
 
         echo '#!/bin/bash
-        HERE="$(dirname "$(readlink -f "${0}")")"
+        #HERE="$(dirname "$(readlink -f "${0}")")"
+        HERE="$(pwd)"
         echo "HERE: $HERE"
 
         cd "$HERE"/opt/python3*/bin/
