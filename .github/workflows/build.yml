@@ -40,20 +40,26 @@ jobs:
       run: |
         set -x
 
-        version=$(grep -o "Syncplay:.*" README.md | cut -d ' ' -f2)
-        echo "Syncplay version: $version"
+        #version=$(grep -o "Syncplay:.*" README.md | cut -d ' ' -f2)
+        #echo "Syncplay version: $version"
 
         cd squashfs-root/opt/python3*/bin/
-        pwd
-        ls -lah
+        pwd; ls -lah
 
-        wget https://github.com/Syncplay/syncplay/archive/refs/tags/v${version}.tar.gz
-        tar -xvf v${version}.tar.gz
-        cd syncplay-${version}/
+        wget https://mark0.net/download/trid.zip
+        wget https://mark0.net/download/triddefs.zip
 
-        ../pip3.* install --upgrade pip
+        pwd; ls -lah
+        unzip trid.zip
+        unzip triddefs.zip
 
-        ../pip3.* install -r requirements.txt --upgrade
+        #wget https://github.com/Syncplay/syncplay/archive/refs/tags/v${version}.tar.gz
+        #tar -xvf v${version}.tar.gz
+        #cd syncplay-${version}/
+
+        #../pip3.* install --upgrade pip
+
+        #../pip3.* install -r requirements.txt --upgrade
 
         # Change pyside6 to PySide6-Essentials to reduce AppImage size
         sed -i 's/pyside6/PySide6-Essentials/g' requirements_gui.txt
