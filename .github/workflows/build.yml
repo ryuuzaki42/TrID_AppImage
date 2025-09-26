@@ -146,7 +146,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          file: "Syncplay*.AppImage; Syncplay*.zsync; Syncplay*.md5"
+          file: "TrID*.AppImage; TrID*.zsync; TrID*.md5"
           #delete_file: "random-name-*.txt;random-*.txt"
           release_id: ${{ steps.create_release.outputs.id }}
           #overwrite: true
