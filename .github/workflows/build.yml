@@ -77,30 +77,38 @@ jobs:
         set -x
 
         #version=$(grep -o "Syncplay:.*" README.md | cut -d ' ' -f2)
-        #echo "Syncplay version: $version"
+        version=1
+        echo "Syncplay version: $version"
 
         cd squashfs-root/
         pwd
         ls -lah
 
-        rm -v python* .DirIcon AppRun
-        cd opt/python3.12/bin/
+        #rm -v python* .DirIcon AppRun
+        rm .DirIcon
+        
+        mv python.png TrID.png
+        mv python3*.desktop TrID.desktop
+        
+        cd opt/python3.*/bin/
 
         #find . | grep ".png"
         #find . | grep ".svg"
-        cp syncplay/usr/lib/syncplay/syncplay/resources/syncplay.png ./../../../
+        #cp syncplay/usr/lib/syncplay/syncplay/resources/syncplay.png ./../../../
 
         #find . | grep ".desktop"
-        cp syncplay/usr/lib/syncplay/syncplay/resources/syncplay.desktop ./../../../
+        #cp syncplay/usr/lib/syncplay/syncplay/resources/syncplay.desktop ./../../../
 
         pwd
         ls -lah
         cd ../../../
-        cat syncplay.desktop
+        #cat syncplay.desktop
+        cat TrID.desktop
 
-        #sed -i "s/Name=Syncplay/Name=Syncplay-$version/" syncplay.desktop
-        mv syncplay.desktop Syncplay.desktop
-        cat Syncplay.desktop
+        #sed -i "s/Name=.*/Name=TrID/" syncplay.desktop
+        #mv syncplay.desktop Syncplay.desktop
+        #cat Syncplay.desktop
+        cat TrID.desktop
 
         cd ../
         pwd
@@ -111,7 +119,8 @@ jobs:
         echo "HERE: $HERE"
 
         cd "$HERE"/opt/python3*/bin/
-        ./python3.* syncplay/usr/lib/syncplay/syncplayClient.py "$@"'> squashfs-root/AppRun
+        #./python3.* syncplay/usr/lib/syncplay/syncplayClient.py "$@"'> squashfs-root/AppRun
+        #./python3.* trid.py "$@"'> squashfs-root/AppRun
         chmod +x squashfs-root/AppRun
 
         mv README.md squashfs-root/
