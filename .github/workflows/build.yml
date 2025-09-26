@@ -84,6 +84,9 @@ jobs:
         echo '#!/bin/bash
         set -x
 
+        local_folder=$PWD
+        echo "local_folder $local_folder"
+
         HERE="$(dirname "$(readlink -f "${0}")")"
         echo "HERE: $HERE"
         HERE=$(echo "$HERE" | sed "s/usr\/bin//")
@@ -95,8 +98,15 @@ jobs:
 
         if [ "$all_Parameters" != "" ]; then
             file=$(echo "$all_Parameters" | rev | cut -d " " -f1 | rev)
-            file="$PWD/$file" # Add the current directory, $PWD, to the parameter with file
+            file="$local_folder/$file" # Add the current directory, $PWD, to the parameter with file
             parameters_less_file=$(echo "$all_Parameters" | rev | cut -d " " -f2- | rev)
+
+            if [ "$parameters_less_file" == "$file" ]; then
+                parameters_less_file=""
+            fi
+
+            echo "file: $file"
+            echo "parameters_less_file: $parameters_less_file"
         fi
 
         ./python3.* trid.py "$parameters_less_file" "$file"'> squashfs-root/AppRun
