@@ -92,9 +92,13 @@ jobs:
 
         all_Parameters=$@
         echo -e "all_Parameters: $all_Parameters\n"
-        file=$(echo "$all_Parameters" | rev | cut -d ' ' -f1 | rev)
-        file="$PWD/$1" # Add the current directory, $PWD, to the parameter with file
-        parameters_less_file=$(echo "$all_Parameters" | rev | cut -d ' ' -f2- | rev)
+
+        if [ "$all_Parameters" != '']; then
+            file=$(echo "$all_Parameters" | rev | cut -d ' ' -f1 | rev)
+            local_folder="$(pwd)"
+            file="$local_folder/$file" # Add the current directory, $PWD, to the parameter with file
+            parameters_less_file=$(echo "$all_Parameters" | rev | cut -d ' ' -f2- | rev)
+        fi
 
         ./python3.* trid.py "$parameters_less_file" "$file"'> squashfs-root/AppRun
         chmod +x squashfs-root/AppRun
