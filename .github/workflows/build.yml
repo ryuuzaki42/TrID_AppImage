@@ -107,6 +107,12 @@ jobs:
             file="$local_folder/$file" # Add the current directory, $PWD, to the parameter with file
             echo "file: $file"
             echo "parameters_less_file: $parameters_less_file"
+
+            if [ "$parameters_less_file" == "$file" ]; then
+                parameters="$file"
+            else
+              parameters="$parameters_less_file $file"
+            fi
         fi
 
         ./python3.* trid.py "$parameters_less_file" "$file"'> squashfs-root/AppRun
