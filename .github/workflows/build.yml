@@ -94,10 +94,10 @@ jobs:
         echo -e "all_Parameters: $all_Parameters\n"
 
         if [ "$all_Parameters" != "" ]; then
-            file=$(echo "$all_Parameters" | rev | cut -d ' ' -f1 | rev)
+            file=$(echo "$all_Parameters" | rev | cut -d " " -f1 | rev)
             local_folder="$(pwd)"
             file="$local_folder/$file" # Add the current directory, $PWD, to the parameter with file
-            parameters_less_file=$(echo "$all_Parameters" | rev | cut -d ' ' -f2- | rev)
+            parameters_less_file=$(echo "$all_Parameters" | rev | cut -d " " -f2- | rev)
         fi
 
         ./python3.* trid.py "$parameters_less_file" "$file"'> squashfs-root/AppRun
