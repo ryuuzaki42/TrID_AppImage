@@ -82,12 +82,14 @@ jobs:
         pwd; ls -lah
 
         echo '#!/bin/bash
+        set -x
         HERE="$(dirname "$(readlink -f "${0}")")"
         echo "HERE: $HERE"
         HERE=$(echo "$HERE" | sed "s/usr\/bin//")
         echo "Removed usr/bin HERE: $HERE"
 
         cd "$HERE"/opt/python3*/bin/
+        echo "File: $@"
         ./python3.* trid.py "$@"'> squashfs-root/AppRun
         chmod +x squashfs-root/AppRun
         cat squashfs-root/AppRun
