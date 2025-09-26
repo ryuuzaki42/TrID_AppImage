@@ -90,6 +90,7 @@ jobs:
         cd "$HERE"/opt/python3*/bin/
         ./python3.* trid.py "$@"'> squashfs-root/AppRun
         chmod +x squashfs-root/AppRun
+        cat squashfs-root/AppRun
 
         mv README.md squashfs-root/
         ls -lah squashfs-root/
