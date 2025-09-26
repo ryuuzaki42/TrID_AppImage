@@ -19,7 +19,7 @@ jobs:
     - name: Get appimagetool
       run: |
         set -x
-        #wget -q https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+
         version_go_appimage=$(wget -q -O - https://api.github.com/repos/probonopd/go-appimage/releases | grep "\"name.*appimagetool-.*-x86_64.AppImage\"" | head -n 1 | cut -d '-' -f2)
         echo "version_go_appimage: $version_go_appimage"
         wget -q "https://github.com/probonopd/go-appimage/releases/download/continuous/appimagetool-$version_go_appimage-x86_64.AppImage" -O appimagetool-x86_64.AppImage
@@ -29,8 +29,8 @@ jobs:
     - name: Get Pyhton AppImage
       run: |
         set -x
+
         wget https://github.com/ryuuzaki42/Python_to_make_AppImage/releases/download/3.13.3/python3.13.3-cp313-cp313-manylinux2014_x86_64.AppImage
-        
         fileName=$(ls python3*.AppImage)
         chmod +x "$fileName"
         ./"$fileName" --appimage-extract
@@ -71,11 +71,10 @@ jobs:
         cd opt/python3.*/bin/
         version=$(grep "PROGRAM_VER " trid.py | cut -d '"' -f2)
         echo "TrID version: $version"
-
         pwd; ls -lah
+
         cd ../../../
         cat TrID.desktop
-
         sed -i "s/Name=.*/Name=TrID/" TrID.desktop
         cat TrID.desktop
 
@@ -121,4 +120,4 @@ jobs:
           verbose: true
           #tags: true
           draft: false
-          default_release_name: "Syncplay V in AppImage"
+          default_release_name: "TrID V in AppImage"
