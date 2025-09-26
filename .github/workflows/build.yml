@@ -105,7 +105,7 @@ jobs:
         #cat syncplay.desktop
         cat TrID.desktop
 
-        sed -i "s/Name=.*/Name=TrID/" syncplay.desktop
+        sed -i "s/Name=.*/Name=TrID/" TrID.desktop
         #mv syncplay.desktop Syncplay.desktop
         #cat Syncplay.desktop
         cat TrID.desktop
