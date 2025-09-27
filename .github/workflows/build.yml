@@ -108,14 +108,17 @@ jobs:
             echo "file: $file"
             echo "parameters_less_file: $parameters_less_file"
 
-            if [ "$parameters_less_file" == "$file" ]; then
+            if [ "$parameters_less_file" == "" ]; then # Check if has parameters
                 parameters="$file"
             else
-              parameters="$parameters_less_file $file"
+                parameters="$parameters_less_file $file"
             fi
-        fi
 
-        ./python3.* trid.py "$parameters_less_file" "$file"'> squashfs-root/AppRun
+            ./python3.* trid.py "$parameters"
+        else
+            ./python3.* trid.py
+        fi
+        echo'> squashfs-root/AppRun
         chmod +x squashfs-root/AppRun
         cat squashfs-root/AppRun
 
