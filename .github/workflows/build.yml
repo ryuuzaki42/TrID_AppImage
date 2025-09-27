@@ -59,7 +59,7 @@ jobs:
          sed -i 's/cachefilename = path.parent \/ cachefilename/cachefilename = "\/tmp\/" + str(path.parent \/ cachefilename)/' trid.py 
 
          cat trid.py | grep "cachefilename = "
-         pwd; ls -lah         
+         pwd; ls -lah
 
     - name: Make AppImage
       run: |
@@ -91,7 +91,6 @@ jobs:
         pwd; ls -lah
 
         echo '#!/bin/bash
-        set -x
 
         local_folder=$PWD
         echo "local_folder $local_folder"
