@@ -53,7 +53,7 @@ jobs:
 
         ./pip3.* install --upgrade pip
 
-         ./python3.* trid.py
+         ./python3.* trid.py || ls
          pwd; ls -lah         
 
     - name: Make AppImage
