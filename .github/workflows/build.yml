@@ -45,14 +45,13 @@ jobs:
 
         wget https://mark0.net/download/trid.zip
         wget https://mark0.net/download/triddefs.zip
-
         pwd; ls -lah
+
         unzip trid.zip
         unzip triddefs.zip
-
         rm trid.zip triddefs.zip
 
-        ../pip3.* install --upgrade pip
+        ./pip3.* install --upgrade pip
 
          ./python3.* trid.py
          pwd; ls -lah         
