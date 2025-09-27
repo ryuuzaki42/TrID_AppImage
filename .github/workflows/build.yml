@@ -54,8 +54,8 @@ jobs:
         ./pip3.* install --upgrade pip
 
          #./python3.* trid.py || ls
-         sed 's/cachefilename = path/cachefilename = path "\/tmp\/" +/' trid.py # Edit the folder of cache file
-         cat trid.py | grep "cachefilename = path"
+         sed -i 's/cachefilename = path/cachefilename = path "\/tmp\/" +/' trid.py # Edit the folder of cache file
+         cat trid.py | grep "cachefilename = "
          pwd; ls -lah         
 
     - name: Make AppImage
