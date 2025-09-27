@@ -54,7 +54,10 @@ jobs:
         ./pip3.* install --upgrade pip
 
          #./python3.* trid.py || ls
-         sed -i 's/cachefilename = path.parent / cachefilename/cachefilename = "\/tmp\/" + str(path.parent \/ cachefilename)/' trid.py # Edit the folder of cache file
+
+         # Edit the folder of cache file, .triddefs.trd, from local (./) to tmp (/tmp/) folder
+         sed -i 's/cachefilename = path.parent \/ cachefilename/cachefilename = "\/tmp\/" + str(path.parent \/ cachefilename)/' trid.py 
+
          cat trid.py | grep "cachefilename = "
          pwd; ls -lah         
 
