@@ -52,7 +52,10 @@ jobs:
 
         rm trid.zip triddefs.zip
 
-        #../pip3.* install --upgrade pip
+        ../pip3.* install --upgrade pip
+
+         ./python3.* trid.py
+         pwd; ls -lah         
 
     - name: Make AppImage
       run: |
@@ -65,7 +68,9 @@ jobs:
         #rm -v python* .DirIcon AppRun
         rm .DirIcon
 
-        mv python.png TrID.png
+        #mv python.png TrID.png
+        rm python.png
+        wget https://mark0.net/trid_icon.jpg -O TrID.png
         mv python3*.desktop TrID.desktop
 
         cd opt/python3.*/bin/
