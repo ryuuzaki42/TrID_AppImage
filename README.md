@@ -14,6 +14,4 @@ TrID is a CLI utility designed to identify file types from their binary signatur
 ```
 
 ---
-https://mark0.net/soft-tridnet-e.html
-
 https://mark0.net/soft-trid-e.html
