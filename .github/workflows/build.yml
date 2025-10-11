@@ -19,27 +19,25 @@ jobs:
     - name: Get appimagetool
       run: |
         set -x
-
         version_go_appimage=$(wget -q -O - https://api.github.com/repos/probonopd/go-appimage/releases | grep "\"name.*appimagetool-.*-x86_64.AppImage\"" | head -n 1 | cut -d '-' -f2)
         echo "version_go_appimage: $version_go_appimage"
+
         wget -q "https://github.com/probonopd/go-appimage/releases/download/continuous/appimagetool-$version_go_appimage-x86_64.AppImage" -O appimagetool-x86_64.AppImage
         chmod +x appimagetool-x86_64.AppImage
-        ls -lah
+        pwd; ls -lah
 
     - name: Get Pyhton AppImage
       run: |
         set -x
-
         wget https://github.com/ryuuzaki42/Python_to_make_AppImage/releases/download/3.13.3/python3.13.3-cp313-cp313-manylinux2014_x86_64.AppImage
         fileName=$(ls python3*.AppImage)
         chmod +x "$fileName"
         ./"$fileName" --appimage-extract
-        ls -lah
+        pwd; ls -lah
 
     - name: Install TrID and update pip
       run: |
         set -x
-
         cd squashfs-root/opt/python3*/bin/
         pwd; ls -lah
 
@@ -64,10 +62,8 @@ jobs:
     - name: Make AppImage
       run: |
         set -x
-
         cd squashfs-root/
-        pwd
-        ls -lah
+        pwd; ls -lah
 
         #rm -v python* .DirIcon AppRun
         rm .DirIcon
@@ -79,7 +75,7 @@ jobs:
 
         cd opt/python3.*/bin/
         version=$(grep "PROGRAM_VER " trid.py | cut -d '"' -f2)
-        echo "TrID version: $version"
+        echo "TrID version: $version" # 2.42
         pwd; ls -lah
 
         cd ../../../
@@ -91,7 +87,6 @@ jobs:
         pwd; ls -lah
 
         echo '#!/bin/bash
-
         local_folder=$PWD
         echo "local_folder $local_folder"
 
