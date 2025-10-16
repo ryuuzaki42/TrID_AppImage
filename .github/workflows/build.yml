@@ -1,5 +1,5 @@
 name: Create new realease
-
+# Test 2.43
 on:
   push:
     branches:
@@ -75,7 +75,7 @@ jobs:
 
         cd opt/python3.*/bin/
         version=$(grep "PROGRAM_VER " trid.py | cut -d '"' -f2)
-        echo "TrID version: $version" # 2.42
+        echo "TrID version: $version"
         pwd; ls -lah
 
         cd ../../../
