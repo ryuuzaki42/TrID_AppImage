@@ -1,5 +1,5 @@
 name: Create new realease
-# Test 2.45
+# Test 2.46
 on:
   push:
     branches:
