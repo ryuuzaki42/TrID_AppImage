@@ -1,5 +1,6 @@
-name: Create new realease
+name: Create new release
 # Test 2.47
+
 on:
   push:
     branches:
