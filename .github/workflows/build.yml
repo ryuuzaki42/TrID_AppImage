@@ -71,7 +71,7 @@ jobs:
 
         #mv python.png TrID.png
         rm python.png
-        wget https://mark0.net/trid_icon.jpg -O TrID.png
+        wget https://mark0.net/trid_icon.jpg -O TrID.png # Not png file, but works
         mv python3*.desktop TrID.desktop
 
         cd opt/python3.*/bin/
