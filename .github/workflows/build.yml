@@ -76,6 +76,7 @@ jobs:
 
         #mv python3*.desktop TrID.desktop
         rm python3*.desktop
+
         echo '[Desktop Entry]
         Type=Application
         Name=TrID
@@ -91,11 +92,7 @@ jobs:
         version=$(grep "PROGRAM_VER " trid.py | cut -d '"' -f2)
         echo "TrID version: $version"
         pwd; ls -lah
-
         cd ../../../
-        #cat TrID.desktop
-        #sed -i "s/Name=.*/Name=TrID/" TrID.desktop
-        #cat TrID.desktop
 
         cd ../
         pwd; ls -lah
@@ -152,10 +149,6 @@ jobs:
         echo "fileName: $fileName"
         md5sum "$fileName" > "${fileName}.md5"
         ls -lah
-
-    # Build - Error: Resource not accessible by integration
-    # Change Settings -> Actions -> General -> Workflow Permissions to allow read and write:
-    # https://github.com/actions/first-interaction/issues/10#issuecomment-1506118886
 
     # https://github.com/marketplace/actions/upload-to-github-release
     - uses: xresloader/upload-to-github-release@main
