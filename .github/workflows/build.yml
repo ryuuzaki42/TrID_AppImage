@@ -52,6 +52,7 @@ jobs:
 
         ./pip3.* install --upgrade pip
 
+         # Test trid - try get triddefs
          #./python3.* trid.py || ls
 
          # Edit the folder of cache file, .triddefs.trd, from local (./) to tmp (/tmp/) folder
@@ -67,12 +68,24 @@ jobs:
         pwd; ls -lah
 
         #rm -v python* .DirIcon AppRun
-        rm .DirIcon
+        rm .DirIcon AppRun
 
         #mv python.png TrID.png
         rm python.png
         wget https://mark0.net/trid_icon.jpg -O TrID.png # Not png file, but works
-        mv python3*.desktop TrID.desktop
+
+        #mv python3*.desktop TrID.desktop
+        rm python3*.desktop
+        echo '[Desktop Entry]
+        Type=Application
+        Name=TrID
+        Exec=TrID
+        Comment=TrID is an utility designed to identify file types from their binary signatures
+        Icon=TrID
+        Categories=Utility
+        Terminal=true' > TrID.desktop
+        chmod +x TrID.desktop
+        cat TrID.desktop
 
         cd opt/python3.*/bin/
         version=$(grep "PROGRAM_VER " trid.py | cut -d '"' -f2)
@@ -80,9 +93,9 @@ jobs:
         pwd; ls -lah
 
         cd ../../../
-        cat TrID.desktop
-        sed -i "s/Name=.*/Name=TrID/" TrID.desktop
-        cat TrID.desktop
+        #cat TrID.desktop
+        #sed -i "s/Name=.*/Name=TrID/" TrID.desktop
+        #cat TrID.desktop
 
         cd ../
         pwd; ls -lah
