@@ -11,11 +11,11 @@ https://mark0.net/soft-trid-e.html
 
 ## Usage
 ```
-    # Base
-    ./TrID*_JB-x86_64.AppImage
+# Base
+    ./TrID-*_JB-x86_64.AppImage
 
-    # With some file.txt
-    ./TrID*_JB-x86_64.AppImage file.ext
+# With some file.txt
+    ./TrID-*_JB-x86_64.AppImage file.ext
 ```
 ---
 https://mark0.net/soft-trid-e.html
