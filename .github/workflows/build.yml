@@ -1,5 +1,5 @@
 name: Create new release
-# Test 2.47
+# Test 2.48
 
 on:
   push:
@@ -69,15 +69,9 @@ jobs:
         cd squashfs-root/
         pwd; ls -lah
 
-        #rm -v python* .DirIcon AppRun
         rm .DirIcon AppRun
-
-        #mv python.png TrID.png
-        rm python.png
+        rm python.png python3*.desktop
         wget https://mark0.net/trid_icon.jpg -O TrID.png # Not png file, but works
-
-        #mv python3*.desktop TrID.desktop
-        rm python3*.desktop
 
         echo '[Desktop Entry]
         Type=Application
