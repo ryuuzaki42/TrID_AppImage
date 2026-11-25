@@ -1,5 +1,7 @@
 name: Create new release
-# Test 2.48
+# Test - https://mark0.net/
+# TrID: 2.48
+# Library of filetypes definitions, triddefs: 23 November 2026
 
 on:
   push:
